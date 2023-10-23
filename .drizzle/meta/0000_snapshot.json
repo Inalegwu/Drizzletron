@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "65f3bcfe-02f0-461f-97af-c3e2fbb7ee5a",
+  "id": "4b6e42c0-1222-420a-89f8-220f0c02e2c6",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "cities": {
@@ -9,7 +9,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "integer",
+          "type": "text",
           "primaryKey": true,
           "notNull": true,
           "autoincrement": false
@@ -57,13 +57,6 @@
           "name": "countries_id_unique",
           "columns": [
             "id"
-          ],
-          "isUnique": true
-        },
-        "nameId": {
-          "name": "nameId",
-          "columns": [
-            "name"
           ],
           "isUnique": true
         }

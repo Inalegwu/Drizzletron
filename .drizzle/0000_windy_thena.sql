@@ -1,5 +1,5 @@
 CREATE TABLE `cities` (
-	`id` integer PRIMARY KEY NOT NULL,
+	`id` text PRIMARY KEY NOT NULL,
 	`name` text,
 	`country_id` integer
 );
@@ -9,5 +9,4 @@ CREATE TABLE `countries` (
 	`name` text
 );
 --> statement-breakpoint
-CREATE UNIQUE INDEX `countries_id_unique` ON `countries` (`id`);--> statement-breakpoint
-CREATE UNIQUE INDEX `nameId` ON `countries` (`name`);
+CREATE UNIQUE INDEX `countries_id_unique` ON `countries` (`id`);

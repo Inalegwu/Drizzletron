@@ -19,7 +19,7 @@ const createWindow = () => {
   handle.getCities();
 
   mainWindow.loadFile("dist/index.html");
-  // mainWindow.webContents.openDevTools({ mode: "left" });
+  mainWindow.webContents.openDevTools({ mode: "left" });
 };
 
 app.whenReady().then(() => {

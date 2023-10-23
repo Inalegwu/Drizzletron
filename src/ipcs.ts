@@ -13,15 +13,17 @@ export const { ipcMain, ipcRenderer, exposeApiToGlobalWindow } =
       async getCities() {
         const data = await getAllCities();
 
-        return data.map((v) => ({ name: v.name, id: v.id }));
+        return data;
       },
       async geCountries() {
         const data = await getAllCountries();
 
-        return data.map((v) => ({ name: v.name, id: v.id }));
+        return data;
       },
       async insertCountry(_, data: InsertCountry) {
         const response = addCountry(data);
+
+        console.log(response);
 
         return response;
       },

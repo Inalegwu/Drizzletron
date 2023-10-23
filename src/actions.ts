@@ -18,8 +18,8 @@ export function addCity(data: InsertCity) {
 
 export function addCountry(data: InsertCountry) {
   const insert = db.insert(countries).values(data).returning({
-    name: countries.name,
     id: countries.id,
+    name: countries.name,
   });
 
   return insert;
@@ -29,8 +29,6 @@ export function getAllCountries() {
   const data = db
     .select({ name: countries.name, id: countries.id })
     .from(countries);
-
-  console.log(data);
 
   return data;
 }

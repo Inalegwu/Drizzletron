@@ -6,23 +6,17 @@ import {
   integer,
 } from "drizzle-orm/sqlite-core";
 
-export const countries = sqliteTable(
-  "countries",
-  {
-    id: text("id").unique().notNull().primaryKey(),
-    name: text("name"),
-  },
-  (countries) => ({
-    nameIdx: uniqueIndex("nameId").on(countries.name),
-  })
-);
+export const countries = sqliteTable("countries", {
+  id: text("id").unique().notNull().primaryKey(),
+  name: text("name"),
+});
 
 export const cityRelations = relations(countries, ({ many }) => ({
   cities: many(cities),
 }));
 
 export const cities = sqliteTable("cities", {
-  id: integer("id").primaryKey(),
+  id: text("id").primaryKey(),
   name: text("name"),
   countryId: integer("country_id"),
 });
