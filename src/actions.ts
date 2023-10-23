@@ -26,9 +26,7 @@ export function addCountry(data: InsertCountry) {
 }
 
 export function getAllCountries() {
-  const data = db
-    .select({ name: countries.name, id: countries.id })
-    .from(countries);
+  const data = db.select().from(countries);
 
   return data;
 }

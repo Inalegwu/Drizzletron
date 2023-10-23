@@ -24,6 +24,7 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   createWindow();
+  console.log("Mounted");
 });
 
 app.once("window-all-closed", () => app.quit());

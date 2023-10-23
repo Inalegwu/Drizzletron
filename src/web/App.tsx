@@ -26,14 +26,18 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
+    console.log("Here");
+
     window.api.invoke.geCountries().then((v) => {
-      setCountries(v);
+      console.log(v);
+      setCountries((d) => [...d, ...v]);
     });
 
     window.api.invoke.getCities().then((v) => {
-      setCities(v);
+      console.log(v);
+      setCities((d) => [...d, ...v]);
     });
-  }, []);
+  }, [setCities, setCountries]);
 
   const addCity = useCallback(() => {
     window.api.invoke.insertCity({ id: v4(), name: cityName });
@@ -52,20 +56,20 @@ export const App = () => {
         onChange={(e) => setCityName(e.currentTarget.value)}
         placeholder="City Name"
       />
-      <button onClick={addCity}>add city</button>
+      <button onClick={addCity}>add cities</button>
 
       {countries.map((v) => {
         return (
-          <h1 key={v.id}>
+          <div key={v.id}>
             {v.id} -{v.name}
-          </h1>
+          </div>
         );
       })}
       {cities.map((v) => {
         return (
-          <h1 key={v.id}>
+          <div key={v.id}>
             {v.id} -{v.name}
-          </h1>
+          </div>
         );
       })}
     </div>

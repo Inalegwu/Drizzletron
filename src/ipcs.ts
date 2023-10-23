@@ -13,6 +13,8 @@ export const { ipcMain, ipcRenderer, exposeApiToGlobalWindow } =
       async getCities() {
         const data = await getAllCities();
 
+        console.log(`CITIES => ${data}`);
+
         return data;
       },
       async geCountries() {
