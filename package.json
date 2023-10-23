@@ -15,10 +15,14 @@
     "build": "rimraf dist && cross-env NODE_ENV=\"production\" webpack --progress",
     "dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
     "dev:electron": "wait-on dist/main.js dist/index.html && electronmon .",
-    "postinstall": "electron-rebuild"
+    "postinstall": "electron-rebuild",
+    "generate": "drizzle-kit generate:sqlite",
+    "db:studio": "drizzle-kit studio"
   },
   "electronmon": {
-    "patterns": ["dist/**/*"]
+    "patterns": [
+      "dist/**/*"
+    ]
   },
   "dependencies": {
     "@electron/rebuild": "^3.3.0",
