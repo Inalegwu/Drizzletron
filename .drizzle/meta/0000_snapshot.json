@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "ec485d24-6cea-4b2e-94ed-c4bbec4fe197",
+  "id": "65f3bcfe-02f0-461f-97af-c3e2fbb7ee5a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "cities": {
@@ -30,21 +30,7 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {
-        "cities_country_id_countries_id_fk": {
-          "name": "cities_country_id_countries_id_fk",
-          "tableFrom": "cities",
-          "tableTo": "countries",
-          "columnsFrom": [
-            "country_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },

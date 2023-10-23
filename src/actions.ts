@@ -2,7 +2,7 @@ import db from "./db";
 import { InsertCity, InsertCountry, cities, countries } from "./models";
 
 export function getAllCities() {
-  const data = db.select({ name: cities.name }).from(cities);
+  const data = db.select({ name: cities.name, id: cities.id }).from(cities);
 
   return data;
 }
@@ -13,8 +13,6 @@ export function addCity(data: InsertCity) {
     .values(data)
     .returning({ name: cities.name, id: cities.id });
 
-  console.log(insert);
-
   return insert;
 }
 
@@ -24,14 +22,15 @@ export function addCountry(data: InsertCountry) {
     id: countries.id,
   });
 
-  console.log(insert);
-  return true;
+  return insert;
 }
 
 export function getAllCountries() {
   const data = db
     .select({ name: countries.name, id: countries.id })
     .from(countries);
+
+  console.log(data);
 
   return data;
 }

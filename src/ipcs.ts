@@ -1,25 +1,29 @@
 import { createInterprocess } from "interprocess";
 import { InsertCity, InsertCountry } from "./models";
-import { getAllCities, getAllCountries } from "./actions";
+import { addCity, addCountry, getAllCities, getAllCountries } from "./actions";
 
 export const { ipcMain, ipcRenderer, exposeApiToGlobalWindow } =
   createInterprocess({
     main: {
       async insertCity(_, data: InsertCity) {
-        console.log(data);
+        const response = await addCity(data);
+
+        return response;
       },
       async getCities() {
-        const data = getAllCities();
+        const data = await getAllCities();
 
-        return data;
+        return data.map((v) => ({ name: v.name, id: v.id }));
       },
       async geCountries() {
-        const data = getAllCountries();
+        const data = await getAllCountries();
 
-        return data;
+        return data.map((v) => ({ name: v.name, id: v.id }));
       },
       async insertCountry(_, data: InsertCountry) {
-        console.log(data);
+        const response = addCountry(data);
+
+        return response;
       },
     },
   });
