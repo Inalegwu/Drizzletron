@@ -12,4 +12,24 @@
   display: flex;
   align-content: center;
   align-items: center;
+  justify-content: center;
+}
+
+button {
+  border: none;
+  background: #000000;
+  padding: 6px;
+  border-radius: 3px;
+  color: white;
+}
+
+button#delete {
+  background: red;
+}
+
+input {
+  padding: 6px;
+  border: none;
+  background: #ececec;
+  border-radius: 3px;
 }

@@ -43,10 +43,12 @@ export const App = () => {
 
   const deleteCity = useCallback((id: string) => {
     window.api.invoke.deleteCity(id);
+    alert("City Deleted");
   }, []);
 
   const deleteCountry = useCallback((id: string) => {
     window.api.invoke.deleteCountry(id);
+    alert("Country Deleted");
   }, []);
 
   return (
@@ -70,7 +72,7 @@ export const App = () => {
             onChange={(e) => setCityName(e.currentTarget.value)}
             placeholder="City Name"
           />
-          <button onClick={addCity}>add cities</button>
+          <button onClick={addCity}>add city</button>
         </div>
 
         <div style={{ marginTop: "10px" }}>
@@ -86,7 +88,9 @@ export const App = () => {
                 }}
               >
                 {v.name}
-                <button onClick={() => deleteCountry(v.id)}>delete</button>
+                <button id="delete" onClick={() => deleteCountry(v.id)}>
+                  delete
+                </button>
               </div>
             );
           })}
@@ -102,7 +106,9 @@ export const App = () => {
                 key={v.id}
               >
                 {v.name}
-                <button onClick={() => deleteCity(v.id)}>delete</button>
+                <button id="delete" onClick={() => deleteCity(v.id)}>
+                  delete
+                </button>
               </div>
             );
           })}
