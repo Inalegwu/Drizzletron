@@ -76,6 +76,10 @@ export const App = () => {
         </div>
 
         <div style={{ marginTop: "10px" }}>
+          {countries.length === 0 && cities.length === 0 && (
+            <h4 style={{ textAlign: "center" }}>No Data</h4>
+          )}
+
           {countries.map((v) => {
             return (
               <div
@@ -85,6 +89,8 @@ export const App = () => {
                   width: "100%",
                   display: "flex",
                   justifyContent: "space-between",
+                  alignContent: "center",
+                  alignItems: "center",
                 }}
               >
                 {v.name}
@@ -102,6 +108,8 @@ export const App = () => {
                   width: "100%",
                   display: "flex",
                   justifyContent: "space-between",
+                  alignContent: "center",
+                  alignItems: "center",
                 }}
                 key={v.id}
               >
