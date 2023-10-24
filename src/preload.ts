@@ -1,6 +1,6 @@
 import { exposeApiToGlobalWindow } from "./ipcs";
 
-console.log("preloaded!");
+console.log("Fuck yeah I'm mounted up");
 
 const { key, api } = exposeApiToGlobalWindow({
   apiKey: "api",

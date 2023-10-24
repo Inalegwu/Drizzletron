@@ -1,3 +1,4 @@
+import { eq } from "drizzle-orm";
 import db from "./db";
 import { InsertCity, InsertCountry, cities, countries } from "./models";
 
@@ -29,4 +30,16 @@ export function getAllCountries() {
   const data = db.select().from(countries);
 
   return data;
+}
+
+export async function deleteCityById(id: string) {
+  const response = await db.delete(cities).where(eq(cities.id, id));
+
+  return response.changes;
+}
+
+export async function deleteCountryById(id: string) {
+  const response = await db.delete(countries).where(eq(countries.id, id));
+
+  return response.changes;
 }

@@ -23,55 +23,91 @@ export const App = () => {
           alert("Unable to add country");
         }
       });
-  }, []);
+  }, [countryName]);
 
   useEffect(() => {
     console.log("Here");
 
     window.api.invoke.geCountries().then((v) => {
-      console.log(v);
-      setCountries((d) => [...d, ...v]);
+      setCountries(v);
     });
 
     window.api.invoke.getCities().then((v) => {
-      console.log(v);
-      setCities((d) => [...d, ...v]);
+      setCities(v);
     });
   }, [setCities, setCountries]);
 
   const addCity = useCallback(() => {
     window.api.invoke.insertCity({ id: v4(), name: cityName });
+  }, [cityName]);
+
+  const deleteCity = useCallback((id: string) => {
+    window.api.invoke.deleteCity(id);
+  }, []);
+
+  const deleteCountry = useCallback((id: string) => {
+    window.api.invoke.deleteCountry(id);
   }, []);
 
   return (
-    <div>
-      <input
-        type="text"
-        onChange={(e) => setCountryName(e.currentTarget.value)}
-        placeholder="Country Name"
-      />
-      <button onClick={addCountry}>add country</button>
-      <input
-        type="text"
-        onChange={(e) => setCityName(e.currentTarget.value)}
-        placeholder="City Name"
-      />
-      <button onClick={addCity}>add cities</button>
+    <div className="container">
+      <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "5px",
+          }}
+        >
+          <input
+            type="text"
+            onChange={(e) => setCountryName(e.currentTarget.value)}
+            placeholder="Country Name"
+          />
+          <button onClick={addCountry}>add country</button>
+          <input
+            type="text"
+            onChange={(e) => setCityName(e.currentTarget.value)}
+            placeholder="City Name"
+          />
+          <button onClick={addCity}>add cities</button>
+        </div>
 
-      {countries.map((v) => {
-        return (
-          <div key={v.id}>
-            {v.id} -{v.name}
-          </div>
-        );
-      })}
-      {cities.map((v) => {
-        return (
-          <div key={v.id}>
-            {v.id} -{v.name}
-          </div>
-        );
-      })}
+        <div style={{ marginTop: "10px" }}>
+          {countries.map((v) => {
+            return (
+              <div
+                key={v.id}
+                style={{
+                  marginTop: "10px",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                {v.name}
+                <button onClick={() => deleteCountry(v.id)}>delete</button>
+              </div>
+            );
+          })}
+          {cities.map((v) => {
+            return (
+              <div
+                style={{
+                  marginTop: "10px",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+                key={v.id}
+              >
+                {v.name}
+                <button onClick={() => deleteCity(v.id)}>delete</button>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

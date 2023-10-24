@@ -17,9 +17,11 @@ const createWindow = () => {
   handle.insertCountry();
   handle.geCountries();
   handle.getCities();
+  handle.deleteCity();
+  handle.deleteCountry();
 
   mainWindow.loadFile("dist/index.html");
-  mainWindow.webContents.openDevTools({ mode: "left" });
+  // mainWindow.webContents.openDevTools({ mode: "left" });
 };
 
 app.whenReady().then(() => {
